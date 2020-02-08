@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 
 import Header from '../header';
 import RandomPlanet from '../randomPlanet';
@@ -7,22 +7,51 @@ import PersonDetails from '../personDetails';
 
 import './style.css';
 
-const App = () => {
-    return (
-        <div>
-            <Header />
-            <RandomPlanet />
+export default class App extends Component {
+    state = {
+        showRandomPlanet: true,
+        selectedPerson: null
+    };
 
-            <div className="row mb2">
-                <div className="col-md-6">
-                    <ItemList />
-                </div>
-                <div className="col-md-6">
-                    <PersonDetails />
+    toggleRandomPlanet = () => {
+        this.setState((state) => {
+            return {
+                showRandomPlanet: !state.showRandomPlanet
+            }
+        });
+    };
+
+    onPersonSelected = (id) => {
+        this.setState({
+            selectedPerson: id
+        });
+    };
+
+    render() {
+        const planet = this.state.showRandomPlanet ?
+            <RandomPlanet/> :
+            null;
+
+        return (
+            <div>
+                <Header />
+                <div className="container">
+                    { planet }
+                    <button
+                        className="toggle-planet btn btn-warning btn-lg mb-4"
+                        onClick={this.toggleRandomPlanet}>
+                        Toggle Random Planet
+                    </button>
+                    <div className="row mb2">
+                        <div className="col-md-6">
+                            <ItemList onItemSelected={this.onPersonSelected}/>
+                        </div>
+                        <div className="col-md-6">
+                            <PersonDetails personId={this.state.selectedPerson} />
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
-};
-
-export default App;
+        );
+    }
+}

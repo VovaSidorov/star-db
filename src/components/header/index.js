@@ -2,23 +2,25 @@ import React from 'react';
 
 import './style.css';
 
+let hrefLink = '#';
+
 const Header = () => {
     return (
         <div className="header d-flex">
             <h3>
-                <a href="#">
+                <a href={hrefLink}>
                     StarDB
                 </a>
             </h3>
             <ul className="d-flex">
                 <li>
-                    <a href="#">People</a>
+                    <a href={hrefLink}>People</a>
                 </li>
                 <li>
-                    <a href="#">Planets</a>
+                    <a href={hrefLink}>Planets</a>
                 </li>
                 <li>
-                    <a href="#">Starships</a>
+                    <a href={hrefLink}>Starships</a>
                 </li>
             </ul>
         </div>
