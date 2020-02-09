@@ -14,6 +14,7 @@ export default class SwapiService{
 
     getAllPeople = async()=>{
         const res = await this.getResourse(`/people/`);
+        console.log(res);
         return res.results.map(this._transformPerson);
     };
 
@@ -86,8 +87,8 @@ export default class SwapiService{
             id:this._extractId(person),
             name:person.name,
             gender:person.gender,
-            birthYear:person.birthYear,
-            eyeColor:person.eyeColor
+            birthYear:person.birth_year,
+            eyeColor:person.eye_color
         }
     }
 }

@@ -35,7 +35,7 @@ export default class PersonDetails extends Component {
     }
 
     render() {
-
+        console.log(this.state.person);
         if (!this.state.person) {
             return <span>Select a person from a list</span>;
         }
