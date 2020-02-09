@@ -8,6 +8,7 @@ import ErrorIndicator from "../errorIndicator";
 import PeoplePage from "../peoplePage";
 
 import './style.css';
+import ErrorButton from "../errorButton";
 
 
 export default class App extends Component {
@@ -54,6 +55,7 @@ export default class App extends Component {
                         onClick={this.toggleRandomPlanet}>
                         Toggle Random Planet
                     </button>
+                    <ErrorButton />
                     <PeoplePage/>
                 </div>
             </div>
